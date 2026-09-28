@@ -2,6 +2,8 @@
 #define ADVENTURE_H
 
 #include <stdbool.h>
+#include "inventory.h"
+#include "item.h"
 
 #define MAX_NAME_LENGTH 50
 #define MAX_ADVENTURES  20
@@ -9,15 +11,20 @@
 typedef enum Race { HUMAN, ELF, DWARF, HALFLING } Race;
 
 typedef struct Adventure {
-   int id;
-   unsigned int level : 5;
-   unsigned int max_life_points : 10;
-   signed int   actual_life_points : 10;
-   unsigned int attack : 5;
-   unsigned int defense : 5;
-   signed int   initiative : 5;
-   signed int   power : 7;
+   unsigned int id;
+   unsigned int level;
+   unsigned int max_life_points;
+   int   actual_life_points;
+   unsigned int attack;
+   unsigned int defense;
+   int   initiative;
+   int   power;
    char name[MAX_NAME_LENGTH];
+   Inventory inv;
+   Item head, chestplate, gloves, 
+      legs, greaves, ring, necklace, belt, left_hand, right_hand; 
+      /*Esses sao os itens equipados pelo personagem, 
+         poderiamos mudar para um vetor (talvez de chave e valor )*/
    Race race;
 } Adventure;
 
