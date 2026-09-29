@@ -22,7 +22,7 @@ typedef struct Item {
    unsigned int id;
    char name[MAX_LENGTH];
    Type type;
-   unsigned int space_ocupied;
+   unsigned int space_ocuppied;
    int attack_bonus;
    int defence_bonus;
    int life_bonus;

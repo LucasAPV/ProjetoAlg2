@@ -1,5 +1,7 @@
 #include "adventure.h"
 #include "adventure_table.h"
+#include "inventory.h"
+#include "item.h"
 
 int adventure_insert(Adventure *a) {
    Table *t = adventure_table();
@@ -27,3 +29,18 @@ static bool match_id(const void *row, const void *ctx) {
 int adventure_find_by_id(int id) {
    return table_find(adventure_table(), match_id, &id);
 }
+
+bool is_item_in_inventory(Adventure a, Item i){
+   for(int i = 0; i < CAPACITY; ++i){
+      if(a.inv.item[i] == i) {
+         return true
+      }
+   }
+   return false;
+}
+
+bool is_item_in_active_slot(Adventure a, Item i); //TODO
+void move_item_to_active(Adventure *a, Item i);   //TODO
+void move_item_inventory(Adventure *a, Item i);   //TODO
+void list_inventory(Adventure a);                 //TODO
+void list_inventory(Adventure a);                 //TODO

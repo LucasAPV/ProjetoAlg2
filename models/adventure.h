@@ -33,5 +33,9 @@ bool       adventure_update(int idx, const Adventure *a);
 bool       adventure_delete(int idx);
 Adventure *adventure_get(int idx);
 int        adventure_find_by_id(int id);
-
+void       move_item_to_active(Adventure *a, Item i);  //TODO
+void       move_item_inventory(Adventure *a, Item i);  //TODO
+void       list_inventory(Adventure a);                //TODO
+bool       is_item_in_inventory(Adventure a, Item i);  //TODO
+bool       is_item_in_active_slot(Adventure a, Item i);//TODO
 #endif
