@@ -126,7 +126,7 @@ void interface_administrar_inventario() {
             Item novo_item = {0};
             printf("ID do Item: "); scanf("%u", &novo_item.id);
             printf("Nome do Item: "); scanf(" %49[^\n]", novo_item.name); limpa_buffer();
-            printf("Tipo (1-Capacete, 2-Peito, 9-Espada 1M, 10-Espada 2M): "); 
+            printf("Tipo (0-Helmet, 1-Chestplate, 2-Gloves, 3-Leggings, 4-Greaves, 5-Ring, 6-Necklace, 7-Belt, 8-Espada 1M, 9-Espada 2M): "); 
             scanf("%u", (unsigned int*)&novo_item.type);
             printf("Ataque bonus: "); scanf("%u", &novo_item.attack_bonus);
             
