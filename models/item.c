@@ -1,5 +1,5 @@
 #include "item.h"
-#include "item_table.h"
+#include "../database/item_table.h"
 
 int item_insert(Item *a) {
    Table *t = item_table();

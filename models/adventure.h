@@ -21,9 +21,9 @@ typedef struct Adventure {
    int   power;
    char name[MAX_NAME_LENGTH];
    Inventory inv;
-   Item head, chestplate, gloves, 
-      legs, greaves, ring, necklace, belt, left_hand, right_hand; 
-      /*Esses sao os itens equipados pelo personagem, 
+   Item head, chestplate, gloves,
+      legs, greaves, ring, necklace, belt, left_hand, right_hand;
+      /*Esses sao os itens equipados pelo personagem,
          poderiamos mudar para um vetor (talvez de chave e valor )*/
    Race race;
 } Adventure;
@@ -33,9 +33,9 @@ bool       adventure_update(int idx, const Adventure *a);
 bool       adventure_delete(int idx);
 Adventure *adventure_get(int idx);
 int        adventure_find_by_id(int id);
-void       move_item_to_active(Adventure *a, Item i);  //TODO
-void       move_item_inventory(Adventure *a, Item i);  //TODO
+void       move_item_to_active(Adventure *a, Item item);  //TODO
+void       move_item_inventory(Adventure *a, Item item);  //TODO
 void       list_inventory(Adventure a);                //TODO
-bool       is_item_in_inventory(Adventure a, Item i);  //TODO
-bool       is_item_in_active_slot(Adventure a, Item i);//TODO
+bool       is_item_in_inventory(Adventure a, Item item);  //TODO
+bool       is_item_in_active_slot(Adventure a, Item item);//TODO
 #endif

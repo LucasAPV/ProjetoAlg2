@@ -1,5 +1,5 @@
 #include "adventure.h"
-#include "adventure_table.h"
+#include "../database/adventure_table.h"
 #include "inventory.h"
 #include "item.h"
 
@@ -30,17 +30,17 @@ int adventure_find_by_id(int id) {
    return table_find(adventure_table(), match_id, &id);
 }
 
-bool is_item_in_inventory(Adventure a, Item i){
+bool is_item_in_inventory(Adventure a, Item item){
    for(int i = 0; i < CAPACITY; ++i){
-      if(a.inv.item[i] == i) {
-         return true
+      if(a.inv.items[i].name == item.name) {
+         return true;
       }
    }
    return false;
 }
 
-bool is_item_in_active_slot(Adventure a, Item i); //TODO
-void move_item_to_active(Adventure *a, Item i);   //TODO
-void move_item_inventory(Adventure *a, Item i);   //TODO
+bool is_item_in_active_slot(Adventure a, Item item); //TODO
+void move_item_to_active(Adventure *a, Item item);   //TODO
+void move_item_inventory(Adventure *a, Item item);   //TODO
 void list_inventory(Adventure a);                 //TODO
 void list_inventory(Adventure a);                 //TODO

@@ -1,5 +1,5 @@
 #include "adventure_table.h"
-#include "adventure.h"      // precisa do sizeof(Adventure)
+#include "../models/adventure.h"      // precisa do sizeof(Adventure)
 
 TABLE_STORAGE(adventures, Adventure, MAX_ADVENTURES);
 static int next_id = 1;

@@ -1,5 +1,5 @@
 #include "inventory.h"
-#include "inventory_table.h"
+#include "../database/inventory_table.h"
 #include <stdbool.h>
 
 int inventory_insert(Inventory *a) {
@@ -31,18 +31,17 @@ int inventory_find_by_id(int id) {
 
 Item find_item_by_id(Inventory i, int id) {
    if(id >= CAPACITY || id < 0 || id > i.last_free_space) return (Item) {};
-   if
    return i.items[id];
 }
 
 bool add_item (Inventory *i, Item item) {
    if(i->last_free_space >= CAPACITY) return false;
-   i->inventory[i->last_free_space] = item;
+   i->items[i->last_free_space] = item;
    i->last_free_space++;
    return true;
 }
 
-Item items (Inventory i) {
+Item *inv_items(Inventory i) {
    return i.items;
 }
 

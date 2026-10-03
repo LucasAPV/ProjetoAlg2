@@ -1,7 +1,7 @@
 #include "item_table.h"
-#include "item.h"
+#include "../models/item.h"
 
-TABLE_STORAGE(adventures, Adventure, MAX_ADVENTURES);
+TABLE_STORAGE(items, Item, MAX_ITEMS);
 static int next_id = 1;
 
 void item_table_up(void)   { TABLE_UP(items); next_id = 1; }
