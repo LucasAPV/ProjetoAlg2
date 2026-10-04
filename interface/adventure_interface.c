@@ -112,11 +112,16 @@ void interface_listar_personagens() {
     if (!encontrou_algum) printf("Nenhum personagem cadastrado.\n");
 }
 
-void criar_item(Item *novo_item) {
+StatusCode criar_item(Item *novo_item) {
     printf("ID do Item: "); scanf("%u", &novo_item->id);
     printf("Nome do Item: "); scanf(" %49[^\n]", novo_item->name); limpa_buffer();
     printf("Tipo (0-Helmet, 1-Chestplate, 2-Gloves, 3-Leggings, 4-Greaves, 5-Ring, 6-Necklace, 7-Belt, 8-Espada 1M, 9-Espada 2M): ");
-    scanf("%u", (unsigned int*)&novo_item->type);
+    int type = 0;
+    scanf("%d", &type);
+    if(type < 0 || type > 9) {
+        return STATUS_INVALID_DATA;
+    }
+    novo_item->type = (Type)type;
 
     printf("Ataque bonus: "); scanf("%d", &novo_item->attack_bonus);
     printf("Defesa bonus: "); scanf("%d", &novo_item->defence_bonus);
@@ -126,6 +131,8 @@ void criar_item(Item *novo_item) {
 
     printf("Espaco ocupado (1 a 50): ");
     scanf("%u", (unsigned int*)&novo_item->space_ocuppied);
+
+    return STATUS_SUCCESS;
 }
 
 void interface_administrar_inventario() {
@@ -140,13 +147,15 @@ void interface_administrar_inventario() {
         if (op == 1) {
             Item novo_item = {0};
 
-            criar_item(&novo_item);
-
-            if (add_item(&(a.inv), novo_item)) {
-                adventure_update(idx, &a);
-                printf("[Sucesso] Item adicionado a mochila!\n");
+            if (criar_item(&novo_item) == STATUS_SUCCESS) {
+                if (add_item(&(a.inv), novo_item)) {
+                    adventure_update(idx, &a);
+                    printf("[Sucesso] Item adicionado a mochila!\n");
+                } else {
+                    printf("[Erro] Mochila cheia!\n");
+                }
             } else {
-                printf("[Erro] Mochila cheia!\n");
+                printf("[Erro] Dados invalidos!\n");
             }
         }
     } else {
