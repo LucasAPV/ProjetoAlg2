@@ -109,6 +109,14 @@ StatusCode move_item_to_active(Adventure *a, Item i){
             }
             a->inv.last_free_space--;
         }
+
+        // mudar status do personagem
+        a->actual_life_points += i.life_bonus;
+        a->attack += i.attack_bonus;
+        a->defense += i.defence_bonus;
+        a->power += i.power;
+        a->initiative += i.initiative_bunus;
+
         return STATUS_SUCCESS;
     }
     return STATUS_INCOMPATIBLE_ITEM;

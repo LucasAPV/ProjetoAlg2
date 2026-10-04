@@ -112,6 +112,22 @@ void interface_listar_personagens() {
     if (!encontrou_algum) printf("Nenhum personagem cadastrado.\n");
 }
 
+void criar_item(Item *novo_item) {
+    printf("ID do Item: "); scanf("%u", &novo_item->id);
+    printf("Nome do Item: "); scanf(" %49[^\n]", novo_item->name); limpa_buffer();
+    printf("Tipo (0-Helmet, 1-Chestplate, 2-Gloves, 3-Leggings, 4-Greaves, 5-Ring, 6-Necklace, 7-Belt, 8-Espada 1M, 9-Espada 2M): ");
+    scanf("%u", (unsigned int*)&novo_item->type);
+
+    printf("Ataque bonus: "); scanf("%d", &novo_item->attack_bonus);
+    printf("Defesa bonus: "); scanf("%d", &novo_item->defence_bonus);
+    printf("Vida bonus: "); scanf("%d", &novo_item->life_bonus);
+    printf("Iniciativa bonus: "); scanf("%d", &novo_item->initiative_bunus);
+    printf("Poder: "); scanf("%u", &novo_item->power);
+
+    printf("Espaco ocupado (1 a 50): ");
+    scanf("%u", (unsigned int*)&novo_item->space_ocuppied);
+}
+
 void interface_administrar_inventario() {
     int id, idx; Adventure a;
     printf("ID do personagem: "); scanf("%d", &id);
@@ -119,18 +135,12 @@ void interface_administrar_inventario() {
     if (get_personagem_by_id(id, &idx, &a) == STATUS_SUCCESS) {
         list_inventory(&a);
 
-        printf("\nDeseja adicionar um item de teste a mochila? (1-Sim, 0-Nao): ");
+        printf("\nDeseja adicionar um item a mochila? (1-Sim, 0-Nao): ");
         int op; scanf("%d", &op);
         if (op == 1) {
             Item novo_item = {0};
-            printf("ID do Item: "); scanf("%u", &novo_item.id);
-            printf("Nome do Item: "); scanf(" %49[^\n]", novo_item.name); limpa_buffer();
-            printf("Tipo (0-Helmet, 1-Chestplate, 2-Gloves, 3-Leggings, 4-Greaves, 5-Ring, 6-Necklace, 7-Belt, 8-Espada 1M, 9-Espada 2M): ");
-            scanf("%u", (unsigned int*)&novo_item.type);
-            printf("Ataque bonus: "); scanf("%d", &novo_item.attack_bonus);
 
-            printf("Espaco ocupado (1 a 50): ");
-            scanf("%u", (unsigned int*)&novo_item.space_ocuppied);
+            criar_item(&novo_item);
 
             if (add_item(&(a.inv), novo_item)) {
                 adventure_update(idx, &a);
@@ -244,19 +254,6 @@ void interface_exibir_atributos() {
     if (get_personagem_by_id(id, &idx, &a) == STATUS_SUCCESS) {
         int total_atk = a.attack;
         int total_def = a.defense;
-
-        if (a.head.id) total_def += a.head.defence_bonus;
-        if (a.chestplate.id) total_def += a.chestplate.defence_bonus;
-        if (a.right_hand.id) total_atk += a.right_hand.attack_bonus;
-        if (a.left_hand.id && a.left_hand.id != a.right_hand.id) {
-            total_atk += a.left_hand.attack_bonus; // Garante que não soma 2x a espada de duas mãos
-        }
-        if (a.gloves.id) total_def += a.gloves.defence_bonus;
-        if (a.legs.id) total_def += a.legs.defence_bonus;
-        if (a.greaves.id) total_def += a.greaves.defence_bonus;
-        if (a.ring.id) total_def += a.ring.defence_bonus;
-        if (a.necklace.id) total_def += a.necklace.defence_bonus;
-        if (a.belt.id) total_def += a.belt.defence_bonus;
 
         printf("\n--- Atributos Totais de %s ---\n", a.name);
         printf("Ataque (Base + Equipamentos): %d\n", total_atk);
