@@ -41,7 +41,7 @@ int table_insert(Table *t, const void *data) {
     memcpy(row_at(t, pos), data, t->elem_size);
     t->used[pos] = true;
     t->count++;
-    return pos;
+    return 1;
 }
 
 bool table_update(Table *t, int idx, const void *data) {

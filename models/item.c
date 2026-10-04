@@ -21,7 +21,7 @@ Item *item_get(int idx) {
 }
 
 static bool match_id(const void *row, const void *ctx) {
-   return ((const Item *)row)->id == *(const int *)ctx;
+   return ((const Item *)row)->id == *(const unsigned int *)ctx;
 }
 
 int item_find_by_id(int id) {

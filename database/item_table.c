@@ -1,6 +1,7 @@
 #include "item_table.h"
 #include "../models/item.h"
 
+#define MAX_ITEMS 100
 TABLE_STORAGE(items, Item, MAX_ITEMS);
 static int next_id = 1;
 

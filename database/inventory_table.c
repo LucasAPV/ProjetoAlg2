@@ -1,7 +1,8 @@
 #include "inventory_table.h"
 #include "../models/inventory.h"
 
-TABLE_STORAGE(inventorys, Inventory, MAX_INVENTORY);
+#define MAX_INVENTORYS 50
+TABLE_STORAGE(inventorys, Inventory, MAX_INVENTORYS);
 static int next_id = 1;
 
 void inventory_table_up(void)   { TABLE_UP(inventorys); next_id = 1; }

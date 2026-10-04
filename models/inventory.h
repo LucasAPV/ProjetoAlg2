@@ -4,7 +4,6 @@
 #include <stdbool.h>
 #include "item.h"
 #define CAPACITY 50
-#define MAX_INVENTORY  20
 
 typedef struct Inventory {
    int id;
@@ -20,5 +19,7 @@ Inventory *inventory_get       (int idx);
 int        inventory_find_by_id(int id);
 Item       find_item_by_id     (Inventory i, int id);
 bool       add_item            (Inventory *i, Item item);
-Item*      items               (Inventory i);
+/*
+Item* items(Inventory i);
+*/
 #endif

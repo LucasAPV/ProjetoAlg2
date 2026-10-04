@@ -4,7 +4,6 @@
 #include <stdbool.h>
 
 #define MAX_LENGTH 50
-#define MAX_ITEMS 50
 
 typedef enum Type {
    HELMET,

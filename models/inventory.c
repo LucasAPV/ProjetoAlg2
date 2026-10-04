@@ -35,13 +35,28 @@ Item find_item_by_id(Inventory i, int id) {
 }
 
 bool add_item (Inventory *i, Item item) {
+   if (item.space_ocuppied < 1 || item.space_ocuppied > 50) {
+      return false;
+   }
+
+   unsigned int espaco_total = 0;
+   for (int j = 0; j < i->last_free_space; j++) {
+      espaco_total += i->items[j].space_ocuppied;
+   }
+
+   if (espaco_total + item.space_ocuppied > 50) {
+      return false;
+   }
+
    if(i->last_free_space >= CAPACITY) return false;
+
    i->items[i->last_free_space] = item;
    i->last_free_space++;
    return true;
 }
 
-Item *inv_items(Inventory i) {
-   return i.items;
+/*
+Item* items (Inventory i) {
+   return (Item*) i.items;
 }
-
+*/
