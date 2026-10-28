@@ -1,7 +1,10 @@
+#ifndef __BEASTS__
+#define __BEASTS__
+
 #define MAX_TEXT_LENGTH_MOB 50
 #define GRID 2
 #define VARIETY 5
-
+#define QTD_COLUMNS 37
 
 /*
 [TODO]
@@ -45,7 +48,7 @@ typedef struct {
     Attack ataques;
     Attack ataquesEspeciais;
     Defence defesasEspeciais;
-    Defence resistenciaMagia;
+    int resistenciaMagia;
     char tamanho[MAX_TEXT_LENGTH_MOB];
     float altura[VARIETY];
     int moral;
@@ -62,3 +65,95 @@ typedef struct {
     char habitatSociedade[MAX_TEXT_LENGTH_MOB];
     char descricaoEcologia[MAX_TEXT_LENGTH_MOB];
 } Beast;
+
+typedef enum ColumnBeast {
+    ID,
+    NOME,
+    DESCRICAO,
+    FREQUENCIA,
+    NUMERO_ENCONTRADO,
+    COVIL,
+    CLIMAS,
+    TERRENOS,
+    ORGANIZACAO,
+    ATIVIDADE,
+    DIETA,
+    INTELIGENCIA,
+    TESOURO,
+    ORDEM,
+    MORALIDADE,
+    CA,
+    MOVIMENTOS,
+    DV,
+    THAC_0,
+    ATAQUES,
+    ATAQUES_ESPECIAIS,
+    DEFESAS_ESPECIAIS,
+    RESISTENCIA_MAGIA,
+    TAMANHO,
+    ALTURA,
+    MORAL,
+    CLASSIFICACAO_MORAL,
+    XP,
+    PODER_BASE,
+    MOD_DIA,
+    MOD_NOITE,
+    MOD_TERRENO,
+    BONUS_POR_ADICIONAL,
+    LIMITE_GRUPO_GRANDE,
+    BONUS_GRUPO_GRANDE,
+    DESCRICAO_COMBATE,
+    HABITAT_SOCIEDADE,
+    DESCRICAO_ECOLOGIA,
+} ColumnBeast;
+
+typedef struct {
+    const char* str;
+    ColumnBeast beast;
+} ColumnMap;
+
+static const ColumnMap COLUMN_MAPS[] = {
+    {"id", ID},
+    {"nome", NOME},
+    {"descricao", DESCRICAO},
+    {"frequencia", FREQUENCIA},
+    {"numeroEncontrado", NUMERO_ENCONTRADO},
+    {"covil", COVIL},
+    {"climas", CLIMAS},
+    {"terrenos", TERRENOS},
+    {"organizacao", ORGANIZACAO},
+    {"atividade", ATIVIDADE},
+    {"dieta", DIETA},
+    {"inteligencia", INTELIGENCIA},
+    {"tesouro", TESOURO},
+    {"ordem", ORDEM},
+    {"moralidade", MORALIDADE},
+    {"ca", CA},
+    {"movimentos", MOVIMENTOS},
+    {"dv", DV},
+    {"thac0", THAC_0},
+    {"ataques", ATAQUES},
+    {"ataquesEspeciais", ATAQUES_ESPECIAIS},
+    {"defesasEspeciais", DEFESAS_ESPECIAIS},
+    {"resistenciaMagia", RESISTENCIA_MAGIA},
+    {"tamanho", TAMANHO},
+    {"altura", ALTURA},
+    {"moral", MORAL},
+    {"classificacaoMoral", CLASSIFICACAO_MORAL},
+    {"xp", XP},
+    {"poderBase", PODER_BASE},
+    {"modDia", MOD_DIA},
+    {"modNoite", MOD_NOITE},
+    {"modTerreno", MOD_TERRENO},
+    {"bonusPorAdicional", BONUS_POR_ADICIONAL},
+    {"limiteGrupoGrande", LIMITE_GRUPO_GRANDE},
+    {"bonusGrupoGrande", BONUS_GRUPO_GRANDE},
+    {"descricaoCombate", DESCRICAO_COMBATE},
+    {"habitatSociedade", HABITAT_SOCIEDADE},
+    {"descricaoEcologia", DESCRICAO_ECOLOGIA}
+};
+
+
+
+
+#endif
