@@ -61,7 +61,31 @@ Beast parse_beast(char** beast_def){
             case LIMITE_GRUPO_GRANDE:
                 b.limiteGrupoGrande = atoi(cv.value);
                 break;
+
+            /*Tratando o que for objetos compostos*/
+            /*Criar funcao para parsear esses objetos especificos*/
+            
+            /*Tratando o que for vetores*/
+            /*Criar funcao para parsear os vetores especificos*/
         }
     }
     return b;
+}
+
+
+/*
+    [TODO]
+        title="Objetos compostos"
+        desc="Criar essa funcao para gerar os objetos compostos para colocar em cada bicho"
+        relevance=Importante
+    [/TODO]
+
+*/
+
+void generate_compost_obj(Beast *b, ColValue cv) {
+    switch(cv.col_name){
+        case TESOURO:
+            b.trasure; /*ASCII TO TREASURE*/
+            break;
+    }
 }
